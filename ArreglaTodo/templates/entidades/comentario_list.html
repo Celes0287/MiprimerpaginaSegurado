@@ -1,0 +1,39 @@
+{% extends "entidades/index.html" %} {% block title %}Lista de Comentarios{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Comentarios de Clientes</h2>
+        <p>
+            <a href="{% url 'arreglatodo:comentario-crear' %}" class="btn btn-primary">➕ Agregar Comentario</a>
+        </p>
+
+        {% if comentarios %}
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Contenido</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comentario in comentarios %}
+                    <tr>
+                        <td>{{ comentario.id }}</td>
+                        <td>{{ comentario.texto|truncatechars:50 }}</td>
+                        <td>{{ comentario.fecha|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            <span class="text-muted">Sin acciones</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info">Aún no hay comentarios registrados.</div>
+        {% endif %}
+        
+        <p><a href="{% url 'arreglatodo:home' %}">Volver al Inicio</a></p>
+    </div>
+{% endblock %}

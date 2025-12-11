@@ -1,0 +1,29 @@
+{% extends 'entidades/index.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ titulo }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ titulo }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="errorlist">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {{ form.as_p }}
+        
+        <button type="submit">Guardar Cliente</button>
+    </form>
+    
+    <p><a href="{% url 'arreglatodo:cliente-list' %}">Volver a la lista de Clientes</a></p>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'entidades/index.html' %}
+
+{% load static %}
+
+{% block title %}Lista de Oficios{% endblock %}
+
+{% block content %}
+    <h2>Lista de Oficios</h2>
+
+    <p>
+        <a href="{% url 'arreglatodo:oficio-crear' %}">➕ Agregar Nuevo Oficio</a>
+    </p>
+
+    {% if oficios %}
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for oficio in oficios %}
+                <tr>
+                    <td>{{ oficio.nombre }}</td>
+                    <td>{{ oficio.descripcion|default:"Sin descripción" }}</td>
+                    <td>
+                        <a href="{% url 'arreglatodo:oficio-editar' pk=oficio.pk %}">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay oficios registrados.</p>
+    {% endif %}
+
+{% endblock %}

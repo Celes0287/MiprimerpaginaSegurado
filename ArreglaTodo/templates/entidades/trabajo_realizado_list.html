@@ -1,0 +1,49 @@
+{% extends 'entidades/index.html' %}
+
+{% load static %}
+
+{% block title %}Lista de Trabajos Realizados{% endblock %}
+
+{% block content %}
+    <h2>Lista de Trabajos Realizados</h2>
+
+    <p>
+        <a href="{% url 'arreglatodo:trabajorealizado-crear' %}">➕ Registrar Nuevo Trabajo Realizado</a>
+    </p>
+
+    {% if trabajos_realizados %}
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Referencia Pedido</th>
+                    <th>Descripción</th>
+                    <th>Fecha Registro</th>
+                    <th>¿Realizado?</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trabajo in trabajos_realizados %}
+                <tr>
+                    <td>{{ trabajo.trabajo_pedido|default:"Trabajo Directo" }}</td>
+                    <td>{{ trabajo.descripcion }}</td>
+                    <td>{{ trabajo.fecha|date:"d M Y" }}</td>
+                    <td>
+                        {% if trabajo.realizado %}
+                            ✅ Sí
+                        {% else %}
+                            ❌ No
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'arreglatodo:trabajorealizado-editar' pk=trabajo.pk %}">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay trabajos realizados registrados.</p>
+    {% endif %}
+
+{% endblock %}
