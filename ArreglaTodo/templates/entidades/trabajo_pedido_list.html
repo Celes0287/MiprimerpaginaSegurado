@@ -1,0 +1,41 @@
+{% extends 'entidades/index.html' %}
+
+{% load static %}
+
+{% block title %}Lista de Trabajos Solicitados{% endblock %}
+
+{% block content %}
+    <h2>Lista de Trabajos Solicitados</h2>
+
+    <p>
+        <a href="{% url 'arreglatodo:trabajopedido-crear' %}">➕ Registrar Nuevo Pedido</a>
+    </p>
+
+    {% if trabajos_pedidos %}
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Descripción</th>
+                    <th>Fecha Acordada</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trabajo in trabajos_pedidos %}
+                <tr>
+                    <td>{{ trabajo.cliente.nombre }} {{ trabajo.cliente.apellido }}</td>
+                    <td>{{ trabajo.descripcion }}</td>
+                    <td>{{ trabajo.fecha_acordada|date:"d M Y" }}</td>
+                    <td>
+                        <a href="{% url 'arreglatodo:trabajopedido-editar' pk=trabajo.pk %}">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay trabajos solicitados registrados.</p>
+    {% endif %}
+
+{% endblock %}
