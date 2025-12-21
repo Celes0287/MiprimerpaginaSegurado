@@ -4,7 +4,11 @@ from .models import *
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
+<<<<<<< HEAD
         fields = ['nombre', 'apellido', 'telefono', 'email', 'oficios', 'matricula']
+=======
+        fields = ['nombre', 'apellido', 'telefono', 'email', 'contraseña', 'oficios', 'matricula']
+>>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
 
 class ClienteForm(forms.ModelForm):
     class Meta:

@@ -6,11 +6,19 @@
     <h1 class="text-white font-weight-bold">Lista de Usuarios</h1>
 {% endblock titulo %}
 
+<<<<<<< HEAD
 {% block contenido %}
     <h2>Lista de Usuarios</h2>
 
     <p>
         <a href="{% url 'arreglatodo:usuario-crear' %}" class="btn btn-primary" >➕ Agregar Nuevo Usuario</a>
+=======
+{% block content %}
+    <h2>Lista de Usuarios</h2>
+
+    <p>
+        <a href="{% url 'arreglatodo:usuario-crear' %}">➕ Agregar Nuevo Usuario</a>
+>>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
     </p>
 
     {% if usuarios %}
@@ -47,5 +55,9 @@
         <p>No hay usuarios registrados.</p>
     {% endif %}
 
+<<<<<<< HEAD
 {% endblock contenido %}
+=======
+{% endblock %}
+>>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
     
