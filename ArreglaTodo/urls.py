@@ -22,7 +22,7 @@ urlpatterns = [
     path('clientes/editar/<int:pk>/', views.editar_cliente, name='cliente-editar'),
 
     #Trabajos Pedidos
-    path('trabajos_pedidos/', listar_trabajos_pedidos, name='trabajo-pedido-list'),
+    path('trabajos_pedidos/', listar_trabajo_pedido, name='trabajo-pedido-list'),
     path('trabajos_pedidos/crear/', views.crear_trabajo_pedido, name='trabajo-pedido-crear'),
     path('trabajos_pedidos/editar/<int:pk>/', views.editar_trabajo_pedido, name='trabajo-pedido-editar'),
 

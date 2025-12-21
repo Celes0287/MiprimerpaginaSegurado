@@ -71,20 +71,20 @@ def editar_cliente(request, pk):
     return render(request, 'entidades/cliente_form.html', {'form': form, 'titulo': f'Editar Cliente: {cliente.nombre}'})
 
 # Trabajo Pedido
-def listar_trabajos_pedidos(request):
+def listar_trabajo_pedido(request):
     trabajos_pedidos = Trabajo_pedido.objects.all()
-    return render(request, 'entidades/trabajo_pedido_list.html', {'trabajos_pedidos': trabajos_pedidos})
+    return render(request, 'entidades/trabajo_pedido_list.html', {'trabajo_pedido': trabajos_pedidos})
 
 def crear_trabajo_pedido(request):
     if request.method == 'POST':
         form = TrabajoPedidoForm(request.POST) 
         if form.is_valid():
             form.save() 
-            return redirect(reverse('arreglatodo:trabajopedido-list'))
+            return redirect(reverse('arreglatodo:trabajo-pedido-list'))
     else:
         form = TrabajoPedidoForm() 
         
-    return render(request, 'entidades/trabajopedido_form.html', {'form': form, 'titulo': 'Crear Pedido'})
+    return render(request, 'entidades/trabajo_pedido_form.html', {'form': form, 'titulo': 'Crear Pedido'})
 
 # Editar Trabajo Pedido Existente
 def editar_trabajo_pedido(request, pk):
@@ -94,11 +94,11 @@ def editar_trabajo_pedido(request, pk):
         form = TrabajoPedidoForm(request.POST, instance=trabajo)
         if form.is_valid():
             form.save() 
-            return redirect(reverse('arreglatodo:trabajopedido-list'))
+            return redirect(reverse('arreglatodo:trabajo-pedido-list'))
     else:
         form = TrabajoPedidoForm(instance=trabajo) 
         
-    return render(request, 'entidades/trabajopedido_form.html', {'form': form, 'titulo': f'Editar Pedido para Cliente: {trabajo.cliente.nombre}'})
+    return render(request, 'entidades/trabajo_pedido_form.html', {'form': form, 'titulo': f'Editar Pedido para Cliente: {trabajo.cliente.nombre}'})
 
 # Trabajo Realizado
 def listar_trabajos_realizados(request):
@@ -110,11 +110,11 @@ def crear_trabajo_realizado(request):
         form = TrabajoRealizadoForm(request.POST) 
         if form.is_valid():
             form.save() 
-            return redirect(reverse('arreglatodo:trabajorealizado-list'))
+            return redirect(reverse('arreglatodo:trabajo-realizado-list'))
     else:
         form = TrabajoRealizadoForm() 
         
-    return render(request, 'entidades/trabajorealizado_form.html', {'form': form})
+    return render(request, 'entidades/trabajo_realizado_form.html', {'form': form})
 
 #Editar Trabajo Realizado
 def editar_trabajo_realizado(request, pk):
@@ -124,11 +124,11 @@ def editar_trabajo_realizado(request, pk):
         form = TrabajoRealizadoForm(request.POST, instance=trabajo)
         if form.is_valid():
             form.save() 
-            return redirect(reverse('arreglatodo:trabajorealizado-list'))
+            return redirect(reverse('arreglatodo:trabajo-realizado-list'))
     else:
         form = TrabajoRealizadoForm(instance=trabajo) 
         
-    return render(request, 'entidades/trabajorealizado_form.html', {'form': form, 'titulo': f'Editar Trabajo ID: {trabajo.id}'})
+    return render(request, 'entidades/trabajo_realizado_form.html', {'form': form, 'titulo': f'Editar Trabajo ID: {trabajo.id}'})
 
 #Oficio
 

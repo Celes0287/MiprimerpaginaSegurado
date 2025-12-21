@@ -6,7 +6,7 @@
     {{ titulo }}
 {% endblock %}
 
-{% block content %}
+{% block contenido %}
     <h2>{{ titulo }}</h2>
     
     <form method="post">
@@ -17,5 +17,5 @@
         <button type="submit">Guardar Registro</button>
     </form>
     
-    <p><a href="{% url 'arreglatodo:trabajorealizado-list' %}">Volver a la lista de Trabajos Realizados</a></p>
-{% endblock %}
+    <p><a href="{% url 'arreglatodo:trabajo-realizado-list' %}">Volver a la lista de Trabajos Realizados</a></p>
+{% endblock contenido %}

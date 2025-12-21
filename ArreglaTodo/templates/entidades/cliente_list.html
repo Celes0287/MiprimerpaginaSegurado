@@ -2,10 +2,11 @@
 
 {% load static %}
 
+{% block titulo %}
+    <h1 class="text-white font-weight-bold">Lista de Clientes</h1>
+{% endblock titulo %}
 
-{% block title %}Lista de Clientes{% endblock %}
-
-{% block content %}
+{% block contenido %}
     <h2>Lista de Clientes</h2>
 
     <p>
@@ -39,4 +40,4 @@
         <p>No hay clientes registrados.</p>
     {% endif %}
 
-{% endblock %}
+{% endblock contenido %}

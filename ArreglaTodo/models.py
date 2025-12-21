@@ -14,12 +14,12 @@ class Oficio(models.Model):
         return self.nombre
 
 class Usuario(models.Model):
-    nombre = models.CharField(max_length=100, label="Nombre")
-    apellido = models.CharField(max_length=100, label="Apellido")
-    telefono = models.CharField(max_length=20, label="Teléfono")
-    email = models.EmailField(unique=True, label="Correo Electrónico")
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
     oficios = models.ManyToManyField(Oficio, help_text="Selecciona los oficios que realiza este usuario.")
-    matricula = models.CharField(max_length=50, label="N° Matrícula", unique=True, blank=True, null=True)
+    matricula = models.CharField(max_length=50, unique=True, blank=True, null=True)
 
     class Meta:
         verbose_name = "Prestador"
@@ -30,10 +30,10 @@ class Usuario(models.Model):
         return f"{self.nombre} {self.apellido} - Matrícula: {self.matricula}"
     
 class Cliente(models.Model):
-    nombre = models.CharField(max_length=100, label="Nombre")
-    apellido = models.CharField(max_length=100, label="Apellido")
-    telefono = models.CharField(max_length=20, label="Teléfono")
-    email = models.EmailField(unique=True, label="Correo Electrónico")
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
 
     class Meta:
         verbose_name = "Cliente"

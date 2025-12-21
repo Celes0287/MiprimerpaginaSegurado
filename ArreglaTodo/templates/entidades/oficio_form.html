@@ -6,7 +6,7 @@
     {{ titulo }}
 {% endblock %}
 
-{% block content %}
+{% block contenido %}
     <h2>{{ titulo }}</h2>
     
     <form method="post">
@@ -18,4 +18,4 @@
     </form>
     
     <p><a href="{% url 'arreglatodo:oficio-list' %}">Volver a la lista de Oficios</a></p>
-{% endblock %}
+{% endblock contenido %}

@@ -6,7 +6,7 @@
     {{ titulo }}
 {% endblock %}
 
-{% block content %}
+{% block contenido %}
     <div class="form-container">
         <h2>{{ titulo }}</h2>
     
@@ -14,7 +14,7 @@
             {% csrf_token %}
         
              <table>
-                {{ form.as_table }}
+                {{ form.as_p }}
             </table>
              
             <input type="submit" class="btn-guardar" value="Guardar"></input>
@@ -22,4 +22,4 @@
     
         <p><a href="{% url 'arreglatodo:cliente-list' %}" class="btn btn-secondary">Cancelar</a></p>
     </div>
-{% endblock %}
+{% endblock contenido %}
