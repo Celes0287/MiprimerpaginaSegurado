@@ -7,23 +7,19 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ titulo }}</h2>
+    <div class="form-container">
+        <h2>{{ titulo }}</h2>
     
-    <form method="post">
-        {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
         
-        {% if form.non_field_errors %}
-            <div class="errorlist">
-                {% for error in form.non_field_errors %}
-                    <p>{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-
-        {{ form.as_p }}
-        
-        <button type="submit">Guardar Cliente</button>
-    </form>
+             <table>
+                {{ form.as_table }}
+            </table>
+             
+            <input type="submit" class="btn-guardar" value="Guardar"></input>
+        </form>
     
-    <p><a href="{% url 'arreglatodo:cliente-list' %}">Volver a la lista de Clientes</a></p>
+        <p><a href="{% url 'arreglatodo:cliente-list' %}" class="btn btn-secondary">Cancelar</a></p>
+    </div>
 {% endblock %}

@@ -5,30 +5,40 @@ class Oficio(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
     descripcion = models.TextField()
 
+    class Meta:
+        verbose_name = "Oficio"
+        verbose_name_plural = "Oficios"
+        ordering = ['nombre']
+        
     def __str__(self):
         return self.nombre
 
 class Usuario(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=20)
-    email = models.EmailField(unique=True)
-    contraseña = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100, label="Nombre")
+    apellido = models.CharField(max_length=100, label="Apellido")
+    telefono = models.CharField(max_length=20, label="Teléfono")
+    email = models.EmailField(unique=True, label="Correo Electrónico")
     oficios = models.ManyToManyField(Oficio, help_text="Selecciona los oficios que realiza este usuario.")
-    matricula = models.CharField(max_length=50, unique=True, blank=True, null=True)
+    matricula = models.CharField(max_length=50, label="N° Matrícula", unique=True, blank=True, null=True)
 
     class Meta:
         verbose_name = "Prestador"
         verbose_name_plural = "Prestadores"
+        ordering = ['apellido', 'nombre']
 
     def __str__(self):
         return f"{self.nombre} {self.apellido} - Matrícula: {self.matricula}"
     
 class Cliente(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=20)
-    email = models.EmailField(unique=True)
+    nombre = models.CharField(max_length=100, label="Nombre")
+    apellido = models.CharField(max_length=100, label="Apellido")
+    telefono = models.CharField(max_length=20, label="Teléfono")
+    email = models.EmailField(unique=True, label="Correo Electrónico")
+
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
+        ordering = ['apellido', 'nombre']
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}{self.telefono}"

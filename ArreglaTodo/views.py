@@ -12,7 +12,7 @@ def home(request):
 # Usuario
 def usuario(request):
     contexto = {"Usuarios": Usuario.objects.all()}
-    return render(request, 'entidades/usuario.html', contexto)
+    return render(request, 'entidades/usuario_list.html', contexto)
 
 def crear_usuario(request):
     if request.method == 'POST':
@@ -22,7 +22,7 @@ def crear_usuario(request):
             return redirect(reverse('arreglatodo:usuario-list'))
     else:
         form = UsuarioForm() 
-        
+            
     return render(request, 'entidades/usuario_form.html', {'form': form, 'titulo': 'Crear Usuario'})
 
 # Editar Usuario Existente
