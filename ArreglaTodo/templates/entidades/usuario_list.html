@@ -8,24 +8,36 @@
 
 {% block contenido %}
     <h2>Datos personales</h2>
+    {% if usuario %}
 
-    <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
-    <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
-    <p><strong>Email:</strong> {{ usuario.email }}</p>
-    <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
-    <p><strong>Oficio:</strong> {{ usuario.oficio }}</p>
-        {% for oficio in usuario.oficios.all %}
-        {{ oficio.nombre }}{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
-    <p><strong>Matrícula:</strong> {{ usuario.matricula }}</p>
-
-    <a href="{% url 'arreglatodo:usuario-editar' pk=usuario.pk %}">Editar</a> |
-    <p>
-        {% if user.is_staff %}
-        <a href="{% url 'arreglatodo:usuario-crear' %}" class="btn btn-primary" >➕ Agregar Nuevo Usuario</a>
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="Avatar" width="150" style="border-radius: 50%; margin-bottom: 20px;">
+        {% else %}
+            <img src="/media/avatars/default.png" alt="Avatar" width="150" style="border-radius: 50%; margin-bottom: 20px;">
         {% endif %}
-    </p>
+
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+        <p><strong>Email:</strong> {{ usuario.email }}</p>
+        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+        <p><strong>oficios:</strong> {{ usuario.oficio }}
+            {% for oficio in usuario.oficios.all %}
+            {{ oficio.nombre }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+
+        <p><strong>Matrícula:</strong> {{ usuario.matricula }}</p>
+
+        <a href="{% url 'arreglatodo:usuario-editar' pk=usuario.pk %}">Editar</a> |
+        <p>
+            {% if user.is_staff %}
+            <a href="{% url 'arreglatodo:usuario-crear' %}" class="btn btn-primary" >➕ Agregar Nuevo Usuario</a>
+            {% endif %}
+        </p>
+
+    {% else %}
+        <p>No tenés un perfil de prestador asignado.</p>
+    {% endif %}
 
 {% endblock contenido %}
     

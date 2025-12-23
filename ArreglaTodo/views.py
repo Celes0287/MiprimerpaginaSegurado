@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import login, authenticate
 from django.db.models import Q
 
@@ -18,7 +19,7 @@ def home(request):
 @login_required
 def usuario(request):
     try:
-        usuario = Usuario.objects.get(email=request.user.email)
+         usuario = request.user.usuario
     except Usuario.DoesNotExist:
         usuario = None
 
@@ -51,6 +52,12 @@ def editar_usuario(request, pk):
         form = UsuarioForm(instance=usuario) 
         
     return render(request, 'entidades/usuario_form.html', {'form': form, 'titulo': f'Editar Usuario: {usuario.nombre}'})
+
+#Solo administradores - Listar todos los prestadores
+@staff_member_required
+def prestadores_admin(request):
+    prestadores = Usuario.objects.all()
+    return render(request, 'entidades/prestadores_admin_list.html', {"prestadores": prestadores})
 
 # Cliente
 @login_required

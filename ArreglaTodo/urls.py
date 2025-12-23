@@ -17,6 +17,7 @@ urlpatterns = [
     path('usuarios/', usuario, name='usuario-list'),
     path('usuarios/crear/', views.crear_usuario, name='usuario-crear'),
     path('usuarios/editar/<int:pk>/', views.editar_usuario, name='usuario-editar'),
+    path('prestadores/admin/', views.prestadores_admin, name='prestadores-admin'),
 
     #Clientes
     path('clientes/', listar_clientes, name='cliente-list'),

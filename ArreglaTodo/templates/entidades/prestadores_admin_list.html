@@ -1,0 +1,49 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+{% block titulo %}
+<h1 class="text-white font-weight-bold">Gestión de Prestadores</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h2>Listado de Prestadores</h2>
+
+<p>
+    <a href="{% url 'arreglatodo:usuario-crear' %}" class="btn btn-primary">
+        ➕ Agregar Nuevo Prestador
+    </a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Oficios</th>
+            <th>Matrícula</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in prestadores %}
+        <tr>
+            <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>
+                {% for oficio in usuario.oficios.all %}
+                    {{ oficio.nombre }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ usuario.matricula|default:"Sin Matrícula" }}</td>
+            <td>
+                <a href="{% url 'arreglatodo:usuario-editar' usuario.pk %}" class="btn btn-sm btn-warning">
+                    Editar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}

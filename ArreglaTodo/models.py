@@ -84,4 +84,9 @@ class Comentario(models.Model):
     def __str__(self):
         return f"Comentario de {self.usuario.nombre} en {self.trabajo_realizado.id} - {self.texto[:50]}..."
     
-
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='avatars/', default='avatars/default.png', null=True, blank=True)
+   
+    def __str__(self):
+        return f"Profile of {self.user.username}"
