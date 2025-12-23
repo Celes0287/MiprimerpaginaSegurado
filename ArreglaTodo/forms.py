@@ -1,14 +1,12 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from .models import *
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
-<<<<<<< HEAD
         fields = ['nombre', 'apellido', 'telefono', 'email', 'oficios', 'matricula']
-=======
-        fields = ['nombre', 'apellido', 'telefono', 'email', 'contraseña', 'oficios', 'matricula']
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -34,3 +32,12 @@ class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['trabajo_realizado', 'usuario', 'texto']
+
+class RegistroForm(UserCreationForm):
+    email = forms.EmailField(label="Correo Electrónico", required=True)
+    first_name = forms.CharField(label="Nombre", required=True)
+    last_name = forms.CharField(label="Apellido", required=True)
+    
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1']

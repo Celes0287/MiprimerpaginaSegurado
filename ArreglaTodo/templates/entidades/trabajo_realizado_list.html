@@ -2,7 +2,6 @@
 
 {% load static %}
 
-<<<<<<< HEAD
 {% block titulo %}
     <h1 class="text-white font-weight-bold">Lista de Trabajos Realizados</h1>
 {% endblock titulo %}
@@ -12,15 +11,6 @@
 
     <p>
         <a href="{% url 'arreglatodo:trabajo-realizado-crear' %}">➕ Registrar Nuevo Trabajo Realizado</a>
-=======
-{% block title %}Lista de Trabajos Realizados{% endblock %}
-
-{% block content %}
-    <h2>Lista de Trabajos Realizados</h2>
-
-    <p>
-        <a href="{% url 'arreglatodo:trabajorealizado-crear' %}">➕ Registrar Nuevo Trabajo Realizado</a>
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
     </p>
 
     {% if trabajos_realizados %}
@@ -48,11 +38,7 @@
                         {% endif %}
                     </td>
                     <td>
-<<<<<<< HEAD
                         <a href="{% url 'arreglatodo:trabajo-realizado-editar' pk=trabajo.pk %}">Editar</a>
-=======
-                        <a href="{% url 'arreglatodo:trabajorealizado-editar' pk=trabajo.pk %}">Editar</a>
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
                     </td>
                 </tr>
                 {% endfor %}
@@ -62,8 +48,4 @@
         <p>No hay trabajos realizados registrados.</p>
     {% endif %}
 
-<<<<<<< HEAD
 {% endblock contenido %}
-=======
-{% endblock %}
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5

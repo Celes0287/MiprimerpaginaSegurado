@@ -10938,7 +10938,7 @@ header.masthead {
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
 }
-@media (min-width: 992px) {
+@media (min-width: 844px) {
   header.masthead {
     height: 100vh;
     min-height: 40rem;
@@ -10952,7 +10952,7 @@ header.masthead h1, header.masthead .h1 {
     font-size: 3rem;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1500px) {
   header.masthead h1, header.masthead .h1 {
     font-size: 3.5rem;
   }

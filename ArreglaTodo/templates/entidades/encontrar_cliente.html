@@ -1,0 +1,49 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+{% block titulo %}
+    <h1 class="text-white font-weight-bold">Resultados de búsqueda</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container mt-4">
+
+    <h3>Resultados para: <strong>{{ patron }}</strong></h3>
+    <hr>
+
+    {% if clientes %}
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.nombre }} {{ cliente.apellido }}</td>
+                        <td>{{ cliente.telefono|default:"N/A" }}</td>
+                        <td>{{ cliente.email|default:"N/A" }}</td>
+                        <td>
+                            <a href="{% url 'arreglatodo:cliente-editar' cliente.pk %}" class="btn btn-sm btn-primary">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p class="alert alert-warning">No se encontraron clientes que coincidan con la búsqueda.</p>
+    {% endif %}
+
+    <a href="{% url 'arreglatodo:buscar-cliente' %}" class="btn btn-secondary mt-3">Nueva búsqueda</a>
+    <a href="{% url 'arreglatodo:cliente-list' %}" class="btn btn-outline-primary mt-3">Volver al listado</a>
+
+</div>
+{% endblock contenido %}

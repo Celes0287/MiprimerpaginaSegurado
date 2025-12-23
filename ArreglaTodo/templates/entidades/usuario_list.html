@@ -3,61 +3,29 @@
 {% load static %}
 
 {% block titulo %}
-    <h1 class="text-white font-weight-bold">Lista de Usuarios</h1>
+    <h1 class="text-white font-weight-bold">Mi perfil</h1>
 {% endblock titulo %}
 
-<<<<<<< HEAD
 {% block contenido %}
-    <h2>Lista de Usuarios</h2>
+    <h2>Datos personales</h2>
 
+    <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+    <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+    <p><strong>Oficio:</strong> {{ usuario.oficio }}</p>
+        {% for oficio in usuario.oficios.all %}
+        {{ oficio.nombre }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <p><strong>Matrícula:</strong> {{ usuario.matricula }}</p>
+
+    <a href="{% url 'arreglatodo:usuario-editar' pk=usuario.pk %}">Editar</a> |
     <p>
+        {% if user.is_staff %}
         <a href="{% url 'arreglatodo:usuario-crear' %}" class="btn btn-primary" >➕ Agregar Nuevo Usuario</a>
-=======
-{% block content %}
-    <h2>Lista de Usuarios</h2>
-
-    <p>
-        <a href="{% url 'arreglatodo:usuario-crear' %}">➕ Agregar Nuevo Usuario</a>
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
+        {% endif %}
     </p>
 
-    {% if usuarios %}
-        <table border="1" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Oficio/s</th>
-                    <th>Matrícula</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for usuario in usuarios %}
-                <tr>
-                    <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
-                    <td>
-                        {% for oficio in usuario.oficios.all %}
-                            {{ oficio.nombre }}{% if not forloop.last %}, {% endif %}
-                        {% empty %}
-                            N/A
-                        {% endfor %}
-                    </td>
-                    <td>{{ usuario.matricula|default:"Sin Matrícula" }}</td>
-                    <td>
-                        <a href="{% url 'arreglatodo:usuario-editar' pk=usuario.pk %}">Editar</a> |
-                        <a href="{% url 'arreglatodo:usuario-detalle' pk=usuario.pk %}">Ver Detalle</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No hay usuarios registrados.</p>
-    {% endif %}
-
-<<<<<<< HEAD
 {% endblock contenido %}
-=======
-{% endblock %}
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
     

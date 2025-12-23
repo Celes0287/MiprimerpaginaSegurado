@@ -2,7 +2,6 @@
 
 {% load static %}
 
-<<<<<<< HEAD
 {% block titulo %}
     <h1 class="text-white font-weight-bold">Lista de Pedidos</h1>
 {% endblock titulo %}
@@ -12,15 +11,6 @@
 
     <p>
         <a href="{% url 'arreglatodo:trabajo-pedido-crear' %}">➕ Registrar Nuevo Pedido</a>
-=======
-{% block title %}Lista de Trabajos Solicitados{% endblock %}
-
-{% block content %}
-    <h2>Lista de Trabajos Solicitados</h2>
-
-    <p>
-        <a href="{% url 'arreglatodo:trabajopedido-crear' %}">➕ Registrar Nuevo Pedido</a>
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
     </p>
 
     {% if trabajos_pedidos %}
@@ -40,11 +30,7 @@
                     <td>{{ trabajo.descripcion }}</td>
                     <td>{{ trabajo.fecha_acordada|date:"d M Y" }}</td>
                     <td>
-<<<<<<< HEAD
                         <a href="{% url 'arreglatodo:trabajo-pedido-editar' pk=trabajo.pk %}">Editar</a>
-=======
-                        <a href="{% url 'arreglatodo:trabajopedido-editar' pk=trabajo.pk %}">Editar</a>
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
                     </td>
                 </tr>
                 {% endfor %}
@@ -54,8 +40,4 @@
         <p>No hay trabajos solicitados registrados.</p>
     {% endif %}
 
-<<<<<<< HEAD
 {% endblock contenido %}
-=======
-{% endblock %}
->>>>>>> ee53445e159c7670bfa84756f7d045e7f643c4d5
