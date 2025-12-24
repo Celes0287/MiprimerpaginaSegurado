@@ -54,3 +54,5 @@ El cliente luego de filtrar por rubro, categoría y localidad, podrá ver la fic
 El usuario/prestador puede gestionar dentro de la App sus solicitudes, agendar las fechas y horarios acordados, los datos del cliente, establecer alarmas recordatorias y una descripción del trabajo realizado. 
 Una vez brindado el servicio por el profesional, el usuario podrá calificarlo comentando al respecto.
 Es importante que un cliente pueda convertir su perfil a prestador si deseara brindar algún servicio dentro de la app, así como los prestadores tambén puedan buscar a otros prestadores.
+
+Para ver video sobre la web Arregla Todo: https://www.loom.com/share/261d66acdc374d84b442294a876b74ac
