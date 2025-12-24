@@ -28,14 +28,12 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:home' %}">Inicio</a></li>
                         
                         {% if user.is_staff %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'arreglatodo:prestadores-admin' %}">Gestión de Prestadores</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:prestadores-admin' %}">Gestión de Prestadores</a></li>
                         {% endif %}
 
                         {% if user.is_authenticated %}
                                 
-                            <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:usuario-list' %}">Prestadores</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:usuario-list' %}">Mi Perfil</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:cliente-list' %}">Gestión de Clientes</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:oficio-list' %}">Gestión de Oficios</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'arreglatodo:trabajo-pedido-list' %}">Pedidos</a></li>
@@ -56,7 +54,7 @@
                    
                     {% if user.is_authenticated %}
                     <form class="d-flex ms-3" action="{% url 'arreglatodo:encontrar-cliente' %}" method="get">
-                        <input class="form-control me-2" type="search" placeholder="Buscar cliente..." aria-label="Buscar" name="Buscar">
+                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar" name="Buscar">
                         <button class="btn btn-outline-light" type="submit">Buscar</button>
                     </form>
                     {% endif %}
@@ -73,7 +71,7 @@
                         {% block titulo %}
                         <h1 class="text-white font-weight-bold">Bienvenidos a Arregla Todo</h1>
                         <h2>Un sitio creado para la Gestión de Servicios Técnicos</h2>
-                        <p>Utiliza el menú de navegación para acceder a los diferentes módulos del sistema.</p>
+                        <p>Inicia sesión para acceder al menú de navegación y usar los diferentes módulos del sistema.</p>
                         {% endblock titulo %}
                  
                     </div>

@@ -36,7 +36,16 @@
         </p>
 
     {% else %}
-        <p>No tenés un perfil de prestador asignado.</p>
+        <h3>Datos de Usuario</h3>
+
+        <p><strong>Nombre:</strong> {{ user.first_name }}</p>
+        <p><strong>Apellido:</strong> {{ user.last_name }}</p>
+        <p><strong>Nombre de usuario:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Teléfono:</strong> {{ user.profile.telefono }}</p>
+
+        <a href="{% url 'arreglatodo:editar-perfil' %}" class="btn btn-warning">Editar mis datos personales</a>
+
     {% endif %}
 
 {% endblock contenido %}

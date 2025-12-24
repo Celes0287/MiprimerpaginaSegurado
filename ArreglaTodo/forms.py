@@ -41,3 +41,21 @@ class RegistroForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1']
+
+class UserEditForm(forms.ModelForm):
+    username = forms.TextInput(attrs={'class': 'form-control'})
+    email = forms.EmailInput(attrs={'class': 'form-control'})
+    first_name = forms.TextInput(attrs={'class': 'form-control'})
+    last_name = forms.TextInput(attrs={'class': 'form-control'})
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']
+
+class ProfileEditForm(forms.ModelForm):
+    telefono = forms.CharField(label="Teléfono", required=False)
+    avatar = forms.ImageField(label="Avatar", required=False)
+    
+    class Meta:
+        model = Profile
+        fields = ['avatar']

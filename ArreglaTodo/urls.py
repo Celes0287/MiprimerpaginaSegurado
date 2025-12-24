@@ -54,4 +54,7 @@ urlpatterns = [
 
     #Sobre Nosotros
     path('sobre-nosotros/', views.sobre_nosotros, name='sobre-nosotros'),
+
+    #Editar Perfil
+    path('perfil/editar/', views.editar_perfil, name='editar-perfil'),
 ]

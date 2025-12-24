@@ -1,0 +1,25 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+{% block titulo %}
+<h1 class="text-white font-weight-bold">Editar mis datos</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+
+<form method="POST" enctype="multipart/form-data" class="mt-4">
+    {% csrf_token %}
+
+    <h3>Datos de la cuenta</h3>
+    {{ user_form.as_p }}
+
+    <h3>Avatar</h3>
+    {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}" width="120" style="border-radius: 50%; margin-bottom: 10px;">
+    {% endif %}
+    {{ profile_form.as_p }}
+
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+</form>
+
+{% endblock contenido %}

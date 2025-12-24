@@ -271,3 +271,28 @@ def register(request):
 #Sobre Nosotros
 def sobre_nosotros(request):
     return render(request, 'entidades/sobre_nosotros.html')
+
+# Editar Perfil de Usuario
+@login_required
+def editar_perfil(request):
+    user = request.user
+    profile = user.profile
+
+    if request.method == 'POST':
+        user_form = UserEditForm(request.POST, instance=user)
+        profile_form = ProfileEditForm(request.POST, request.FILES, instance=profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('arreglatodo:usuario-list')  # vuelve al perfil
+    else:
+        user_form = UserEditForm(instance=user)
+        profile_form = ProfileEditForm(instance=profile)
+
+    contexto = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+    }
+
+    return render(request, 'entidades/editar_perfil.html', contexto)
